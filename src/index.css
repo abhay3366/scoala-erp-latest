@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ✅ Tailwind v4 custom colors */
+@theme {
+  --color-primary: #137fec;
+  --color-success: #198754;
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101922;
+}
+body { font-family: 'Lexend', sans-serif; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.academic-gradient {
+  background: linear-gradient(135deg, #091a6c 0%, #1F3F8C 100%);
+}
+
+.btn-gradient {
+  background: linear-gradient(90deg, #091a6c 0%, #1F3F8C 100%);
+}
+
+.custom-checkbox-tick {
+  --checkbox-tick-svg: url('data:image/svg+xml,%3csvg viewBox=%270 0 16 16%27 fill=%27rgb(255,255,255)%27 xmlns=%27http://www.w3.org/2000/svg%27%3e%3cpath d=%27M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z%27/%3e%3c/svg%3e');
+}
+ .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .active-icon { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
