@@ -8,7 +8,7 @@ import Captcha from '../../components/Captcha';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const API = "http://localhost:2000/users"
+    const API = "https://dummyjson.com/auth/login"
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
@@ -28,31 +28,59 @@ const Login = () => {
     });
 
     const onSubmit = async (data) => {
-        try {
-            setLoading(true);
-            setError(null);
+        const {email_username, password} = data;
+        console.log("🚀 ~ onSubmit ~ password:", password)
+        console.log("🚀 ~ onSubmit ~ email_username:", email_username)
+        console.log("🚀 ~ onSubmit ~ data:", data)
 
-            const response = await fetch(API, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data)
+        try{
+            const response = await fetch(API,{
+                method:"POST",
+                headers:{"Content-Type":"application/json"},
+                body:JSON.stringify({
+                    username: email_username,
+                    password: password
+                })
             });
-
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.message || 'Invalid credentials. Please try again.');
-            }
-
-            login("demo-token");
-            console.log("Login successful:", result);
-
-        } catch (error) {
-            setError(error.message);
-            console.error("Login Error:", error);
-        } finally {
-            setLoading(false);
+                const result= await response.json();
+                console.log("🚀 ~ onSubmit ~ result:", result)
+        
+        }catch(error){
+            console.log(error)
         }
+
+        // try {
+        //     setLoading(true);
+        //     setError(null);
+
+        //     const response = await fetch(API, {
+        //         method: "POST",
+        //         headers: { "Content-Type": "application/json" },
+        //         body: JSON.stringify(
+        //             {
+        //                 username: email_username,
+        //                 password: password,
+                        
+        //             }
+        //         )
+        //     });
+
+        //     const result = await response.json();
+        //     console.log("🚀 ~ onSubmit ~ result:", result)
+
+        //     if (!response.ok) {
+        //         throw new Error(result.message || 'Invalid credentials. Please try again.');
+        //     }
+
+        //     login("demo-token");
+        //     console.log("Login successful:", result);
+
+        // } catch (error) {
+        //     setError(error.message);
+        //     console.error("Login Error:", error);
+        // } finally {
+        //     setLoading(false);
+        // }
     };
 
     return (

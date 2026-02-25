@@ -663,16 +663,18 @@ const NewRegistration = () => {
   };
 
   const onNext = useCallback(
-    form.handleSubmit((data) => {
-      setAllData(prev => ({ ...prev, ...data }));
-      if (currentStep < 4) {
-        setCurrentStep(s => s + 1);
-        scrollToTop(); // ✅ works for both next and prev
-      } else {
-        setCompleted(true);
-        console.log("Final data:", { ...allData, ...data });
-      }
-    }),
+    () => {
+      form.handleSubmit((data) => {
+        setAllData(prev => ({ ...prev, ...data }));
+        if (currentStep < 4) {
+          setCurrentStep(s => s + 1);
+          scrollToTop(); // ✅ works for both next and prev
+        } else {
+          setCompleted(true);
+          console.log("Final data:", { ...allData, ...data });
+        }
+      })();
+    },
     [form, currentStep, allData]
   );
 
