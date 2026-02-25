@@ -8,7 +8,7 @@ import Captcha from '../../components/Captcha';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
-    const API = "http://localhost:5000/users"
+    const API = "http://localhost:2000/users"
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [showPassword, setShowPassword] = useState(false);
