@@ -52,7 +52,7 @@ function App() {
           </Route>
 
           {/* 🔐 Protected (after login) */}
-          {/* <Route element={<ProtectedRoute />}> */}
+          <Route element={<ProtectedRoute />}>
             <Route element={<AdminLayout />}>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/student" element={<StudentsAction />} />
@@ -69,10 +69,10 @@ function App() {
               <Route path="/academic" element={<Academic />} />
               <Route path="/event-circular" element={<EventCircular />} />
             </Route>
-          {/* </Route> */}
+          </Route>
 
           {/* Default */}
-          {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
+          <Route path="*" element={<Navigate to="/login" replace />} />
 
         </Routes>
       </BrowserRouter>
