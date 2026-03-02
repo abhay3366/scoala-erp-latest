@@ -118,10 +118,55 @@ function Step1() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {/* Row 1: Identifiers */}
         <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Full Name <span className="text-red-500">*</span></label>
+          <label className={labelCls}>Registration No.</label>
+          <input {...register("registrationNo")} placeholder="Enter Registration No." className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>S.R. no</label>
+          <input {...register("srNo")} placeholder="Enter S.R. No." className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Admission No.</label>
+          <input {...register("admissionNo")} placeholder="Enter Admission No." className={inputCls} />
+        </div>
+
+        {/* Row 2: Basic Info */}
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Roll No.</label>
+          <input {...register("rollNo")} placeholder="Enter Roll No." className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Student name <span className="text-red-500">*</span></label>
           <input {...register("fullName")} placeholder="Enter student's full name" className={errors.fullName ? inputErrCls : inputCls} />
           <FieldError message={errors.fullName?.message} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>DOB <span className="text-red-500">*</span></label>
+          <input type="date" {...register("dob")} className={errors.dob ? inputErrCls : inputCls} />
+          <FieldError message={errors.dob?.message} />
+        </div>
+
+        {/* Row 3: Academic Placement */}
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Class <span className="text-red-500">*</span></label>
+          <select {...register("grade")} className={errors.grade ? selectErrCls : selectCls}>
+            <option value="">Select Class</option>
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((g) => (
+              <option key={g} value={g}>Grade {g}</option>
+            ))}
+          </select>
+          <FieldError message={errors.grade?.message} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Section</label>
+          <input {...register("section")} placeholder="e.g. A" className={inputCls} />
         </div>
 
         <div className="flex flex-col gap-1.5">
@@ -135,12 +180,7 @@ function Step1() {
           <FieldError message={errors.gender?.message} />
         </div>
 
-        <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Date of Birth <span className="text-red-500">*</span></label>
-          <input type="date" {...register("dob")} className={errors.dob ? inputErrCls : inputCls} />
-          <FieldError message={errors.dob?.message} />
-        </div>
-
+        {/* Row 4: Personal Details */}
         <div className="flex flex-col gap-1.5">
           <label className={labelCls}>Blood Group</label>
           <select {...register("bloodGroup")} className={selectCls}>
@@ -152,16 +192,45 @@ function Step1() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Class/Grade <span className="text-red-500">*</span></label>
-          <select {...register("grade")} className={errors.grade ? selectErrCls : selectCls}>
-            <option value="">Select Class</option>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((g) => (
-              <option key={g} value={g}>Grade {g}</option>
-            ))}
-          </select>
-          <FieldError message={errors.grade?.message} />
+          <label className={labelCls}>Aadhar no.</label>
+          <input
+            {...register("aadhaar")}
+            placeholder="12-digit Aadhaar number"
+            maxLength={12}
+            className={errors.aadhaar ? inputErrCls : inputCls}
+          />
+          <FieldError message={errors.aadhaar?.message} />
         </div>
 
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>PEN no.</label>
+          <input {...register("penNo")} placeholder="Enter PEN No." className={inputCls} />
+        </div>
+
+        {/* Row 5: Contact & Demographics */}
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Mobile no.</label>
+          <input {...register("mobileNo")} placeholder="Enter Mobile No." className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Religion</label>
+          <select {...register("religion")} className={selectCls}>
+            <option value="">Select</option>
+            <option>Hindu</option>
+            <option>Muslim</option>
+            <option>Christian</option>
+            <option>Sikh</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Nationality</label>
+          <input {...register("nationality")} defaultValue="Indian" className={inputCls} />
+        </div>
+
+        {/* Row 6: Categories */}
         <div className="flex flex-col gap-1.5">
           <label className={labelCls}>Category <span className="text-red-500">*</span></label>
           <select {...register("category")} className={selectCls}>
@@ -174,30 +243,66 @@ function Step1() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Aadhaar Number / National ID</label>
-          <input
-            {...register("aadhaar")}
-            placeholder="12-digit Aadhaar number"
-            maxLength={12}
-            className={errors.aadhaar ? inputErrCls : inputCls}
-          />
-          <FieldError message={errors.aadhaar?.message} />
-        </div>
-
-        <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Nationality</label>
-          <input {...register("nationality")} defaultValue="Indian" className={inputCls} />
-        </div>
-
-        <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Religion</label>
-          <select {...register("religion")} className={selectCls}>
+          <label className={labelCls}>Right to education (Yes/No)</label>
+          <select {...register("rte")} className={selectCls}>
             <option value="">Select</option>
-            <option>Hindu</option>
-            <option>Muslim</option>
-            <option>Christian</option>
-            <option>Sikh</option>
-            <option>Other</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>BPL student (yes/no)</label>
+          <select {...register("bplStudent")} className={selectCls}>
+            <option value="">Select</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+
+        {/* Row 7: Social Status */}
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>BPL Card No.</label>
+          <input {...register("bplCardNo")} placeholder="Enter Card No." className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Person with Disability (PwD)</label>
+          <select {...register("pwd")} className={selectCls}>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Identification Mark</label>
+          <input {...register("identificationMark")} placeholder="e.g. Mole on right hand" className={inputCls} />
+        </div>
+
+        {/* Row 8: Physical Stats */}
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Weight (kg)</label>
+          <input type="number" step="0.1" {...register("weight")} placeholder="0.0" className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Height (cm)</label>
+          <input type="number" {...register("height")} placeholder="0" className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Body Mass Index (BMI)</label>
+          <input {...register("bmi")} placeholder="Auto-calculated" className={inputCls} readOnly />
+        </div>
+
+        {/* Row 9: Health Status */}
+        <div className="flex flex-col gap-1.5 md:col-span-3">
+          <label className={labelCls}>COVID Vaccination (Single Dose/Both Dose/None)</label>
+          <select {...register("covidVaccination")} className={selectCls}>
+            <option value="">Select Status</option>
+            <option>None</option>
+            <option>Single Dose</option>
+            <option>Both Dose</option>
           </select>
         </div>
       </div>
@@ -233,19 +338,34 @@ function Step2() {
         </div>
 
         <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Email Address</label>
+          <label className={labelCls}>Email ID</label>
           <input type="email" {...register(`${prefix}.email`)} placeholder="Email address" className={errors[prefix]?.email ? inputErrCls : inputCls} />
           <FieldError message={errors[prefix]?.email?.message} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Educational Qualification</label>
+          <input {...register(`${prefix}.qualification`)} placeholder="e.g. Graduate, Post Graduate" className={inputCls} />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <label className={labelCls}>Occupation</label>
           <select {...register(`${prefix}.occupation`)} className={selectCls}>
             <option value="">Select Occupation</option>
-            {["Software Engineer", "Doctor", "Business Owner", "Teacher", "Government Employee", "Other"].map((o) => (
+            {["Software Engineer", "Doctor", "Business Owner", "Teacher", "Government Employee", "Homemaker", "Other"].map((o) => (
               <option key={o}>{o}</option>
             ))}
           </select>
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Work Organization Name</label>
+          <input {...register(`${prefix}.organization`)} placeholder="Company or Business name" className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Designation</label>
+          <input {...register(`${prefix}.designation`)} placeholder="e.g. Manager, Director" className={inputCls} />
         </div>
 
         <div className="flex flex-col gap-1.5">
@@ -255,12 +375,6 @@ function Step2() {
             <input type="number" {...register(`${prefix}.income`)} placeholder="0.00" className="flex-1 h-11 px-3 text-sm text-slate-700 bg-white focus:outline-none" />
           </div>
         </div>
-
-        <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Aadhaar Number</label>
-          <input {...register(`${prefix}.aadhaar`)} placeholder="12-digit Aadhaar" maxLength={12} className={errors[prefix]?.aadhaar ? inputErrCls : inputCls} />
-          <FieldError message={errors[prefix]?.aadhaar?.message} />
-        </div>
       </div>
     </div>
   );
@@ -269,6 +383,7 @@ function Step2() {
     <div className="p-8 space-y-6">
       <ParentSection prefix="father" title="Father's Details" icon="F" color="bg-blue-50 border-blue-100" />
       <ParentSection prefix="mother" title="Mother's Details" icon="M" color="bg-pink-50 border-pink-100" />
+      <ParentSection prefix="guardian" title="Guardian's Details" icon="G" color="bg-slate-50 border-slate-100" />
     </div>
   );
 }
@@ -377,13 +492,31 @@ function Step4() {
           <FieldError message={errors.school?.name?.message} />
         </div>
 
+        {/* Added School Address field from image */}
+        <div className="md:col-span-2 flex flex-col gap-1.5">
+          <label className={labelCls}>School Address</label>
+          <input {...register("school.address")} placeholder="Enter school address" className={inputCls} />
+        </div>
+
+        {/* Added UDISE Code field from image */}
         <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Affiliated Board <span className="text-red-500">*</span></label>
+          <label className={labelCls}>UDISE Code</label>
+          <input {...register("school.udiseCode")} placeholder="Enter UDISE code" className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Board <span className="text-red-500">*</span></label>
           <select {...register("school.board")} className={errors.school?.board ? selectErrCls : selectCls}>
             <option value="">Select Board</option>
             {boards.map((b) => <option key={b}>{b}</option>)}
           </select>
           <FieldError message={errors.school?.board?.message} />
+        </div>
+
+        {/* Added T.C. Number field from image */}
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>T.C. Number</label>
+          <input {...register("school.tcNumber")} placeholder="Enter TC number" className={inputCls} />
         </div>
 
         <div className="flex flex-col gap-1.5">
@@ -396,12 +529,27 @@ function Step4() {
         </div>
 
         <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Year of Passing <span className="text-red-500">*</span></label>
+          <select {...register("school.yearOfPassing")} className={selectCls}>
+            <option value="">Select Year</option>
+            {years.map((y) => <option key={y}>{y}</option>)}
+          </select>
+        </div>
+
+        {/* Added Percentage/Grade field from image */}
+        <div className="flex flex-col gap-1.5">
+          <label className={labelCls}>Percentage/Grade</label>
+          <input {...register("school.result")} placeholder="e.g. 85% or A1" className={inputCls} />
+        </div>
+
+        <div className="flex flex-col gap-1.5">
           <label className={labelCls}>Medium of Instruction <span className="text-red-500">*</span></label>
           <div className="flex gap-4 mt-1">
             {["English", "Hindi", "Regional"].map((m) => (
               <label key={m} className="flex items-center gap-2 cursor-pointer text-sm text-slate-700">
                 <input
                   type="radio"
+                  name="school.medium"
                   checked={medium === m}
                   onChange={() => setValue("school.medium", m)}
                   className="accent-blue-600"
@@ -410,13 +558,6 @@ function Step4() {
               </label>
             ))}
           </div>
-        </div>
-
-        <div className="flex flex-col gap-1.5">
-          <label className={labelCls}>Year of Passing <span className="text-red-500">*</span></label>
-          <select {...register("school.yearOfPassing")} className={selectCls}>
-            {years.map((y) => <option key={y}>{y}</option>)}
-          </select>
         </div>
       </div>
 
