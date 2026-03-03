@@ -41,7 +41,7 @@ function App() {
         <Routes>
 
           {/* 🔓 Public (login) */}
-          <Route element={<PublicRoute />}>
+          {/* <Route element={<PublicRoute />}>
             <Route element={<AuthLayout />}>
               <Route path="/login" element={<Login />} />
               <Route path="/forgot-password" element={<ForgotPassword/>} />
@@ -49,11 +49,12 @@ function App() {
               <Route path="/registration" element={<RegisterSchool/>} />
               
             </Route>
-          </Route>
+          </Route> */}
 
           {/* 🔐 Protected (after login) */}
-          <Route element={<ProtectedRoute />}>
+          {/* <Route element={<ProtectedRoute />}> */}
             <Route element={<AdminLayout />}>
+              <Route path="/" element={<Dashboard />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/student" element={<StudentsAction />} />
               <Route path='/student/add-student' element={<AddStudent />} />
@@ -69,10 +70,10 @@ function App() {
               <Route path="/academic" element={<Academic />} />
               <Route path="/event-circular" element={<EventCircular />} />
             </Route>
-          </Route>
+          {/* </Route> */}
 
           {/* Default */}
-          <Route path="*" element={<Navigate to="/login" replace />} />
+          {/* <Route path="*" element={<Navigate to="/login" replace />} /> */}
 
         </Routes>
       </BrowserRouter>

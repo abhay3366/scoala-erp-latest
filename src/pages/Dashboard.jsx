@@ -1,3 +1,9 @@
+import { GiPresent } from "react-icons/gi";
+import { Md10Mp, MdPayments, MdPeople } from "react-icons/md";
+import { RiSchoolLine } from "react-icons/ri";
+import { SiCohost } from "react-icons/si";
+
+
 const Dashboard = () => {
   return (
      <>
@@ -7,7 +13,9 @@ const Dashboard = () => {
               <div className="flex flex-col justify-between rounded-xl bg-white dark:bg-[#1a2632] p-5 shadow-sm border border-slate-100 dark:border-slate-800">
                 <div className="flex items-center justify-between mb-4">
                   <div className="size-10 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 flex items-center justify-center">
-                    <span className="material-symbols-outlined">school</span>
+                    {/* <span className="material-symbols-outlined">school</span> */}
+              <RiSchoolLine className="text-xl" />
+                    
                   </div>
                   <span className="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
                     <span className="material-symbols-outlined text-[14px] mr-1">trending_up</span> +5.2%
@@ -22,7 +30,7 @@ const Dashboard = () => {
               <div className="flex flex-col justify-between rounded-xl bg-white dark:bg-[#1a2632] p-5 shadow-sm border border-slate-100 dark:border-slate-800">
                 <div className="flex items-center justify-between mb-4">
                   <div className="size-10 rounded-lg bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-                    <span className="material-symbols-outlined">badge</span>
+                    <span className="material-symbols-outlined"><MdPeople className="text-xl"/> </span>
                   </div>
                   <span className="flex items-center text-xs font-bold text-slate-500 bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded-full">
                     <span className="material-symbols-outlined text-[14px] mr-1">remove</span> 0%
@@ -37,7 +45,7 @@ const Dashboard = () => {
               <div className="flex flex-col justify-between rounded-xl bg-white dark:bg-[#1a2632] p-5 shadow-sm border border-slate-100 dark:border-slate-800">
                 <div className="flex items-center justify-between mb-4">
                   <div className="size-10 rounded-lg bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
-                    <span className="material-symbols-outlined">person_check</span>
+                    <span className="material-symbols-outlined"><GiPresent /> </span>
                   </div>
                   <span className="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
                     <span className="material-symbols-outlined text-[14px] mr-1">trending_up</span> +1.2%
@@ -52,7 +60,7 @@ const Dashboard = () => {
               <div className="flex flex-col justify-between rounded-xl bg-white dark:bg-[#1a2632] p-5 shadow-sm border border-slate-100 dark:border-slate-800">
                 <div className="flex items-center justify-between mb-4">
                   <div className="size-10 rounded-lg bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 flex items-center justify-center">
-                    <span className="material-symbols-outlined">attach_money</span>
+                    <span className="material-symbols-outlined"><MdPayments className="text-3xl"/> </span>
                   </div>
                   <span className="flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 dark:bg-emerald-900/20 px-2 py-1 rounded-full">
                     <span className="material-symbols-outlined text-[14px] mr-1">trending_up</span> +12%
@@ -285,7 +293,7 @@ const Dashboard = () => {
             </section>
 
             <section>
-              <h3 className="text-slate-900 dark:text-white text-lg font-bold mb-4">Quick Actionsffff</h3>
+              <h3 className="text-slate-900 dark:text-white text-lg font-bold mb-4">Quick Actions</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <button className="flex flex-col items-center justify-center p-6 bg-white dark:bg-[#1a2632] rounded-xl border border-slate-200 dark:border-slate-700 hover:border-primary/50 hover:shadow-md transition-all group">
                   <div className="size-12 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
